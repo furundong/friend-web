@@ -1,6 +1,7 @@
 package com.example.friend_themselves.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.friend_themselves.entity.FriendArticle;
 
 /**
@@ -11,4 +12,7 @@ import com.example.friend_themselves.entity.FriendArticle;
  */
 public interface FriendArticleDao extends BaseMapper<FriendArticle> {
 
+    Page<FriendArticle> selectPageVo(Page<FriendArticle> page,String id);
+
+    Page<FriendArticle> selectPageByFriendVo(Page<FriendArticle> page, String id);
 }

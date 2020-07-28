@@ -1,5 +1,6 @@
 package com.example.friend_themselves.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 @Data
@@ -11,6 +12,8 @@ public class FriendArticle {
   private java.sql.Timestamp time;
   private String fid;
 
+  @TableField(exist = false)
+  private FriendList friendList;
 
   public String getId() {
     return id;

@@ -2,4 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.friend_themselves.dao.FriendArticleDao">
 
+    <select id="selectPageVo" resultMap="fl" parameterType="string">
+        SELECT a.*,name FROM friend_article  a LEFT JOIN friend_list l on a.fid =  l.id where l.space =1 or l.id = #{id}
+    </select>
+
+    <select id="selectPageByFriendVo" resultMap="fl" parameterType="string">
+        SELECT a.*,name FROM friend_article a LEFT JOIN friend_list l on a.fid = l.id where l.space =1 and l.id = #{id}
+    </select>
+
+    <resultMap id="fl" type="com.example.friend_themselves.entity.FriendArticle">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="time" column="time"/>
+        <association property="friendList" javaType="com.example.friend_themselves.entity.FriendList">
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
 </mapper>

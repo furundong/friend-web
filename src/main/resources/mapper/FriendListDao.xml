@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.friend_themselves.dao.FriendListDao">
 
+    <select id="selectPageRole" resultType="com.example.friend_themselves.entity.FriendList">
+        SELECT ll.* FROM friend_list l LEFT JOIN friend_relation r on l.id = r.fid LEFT JOIN friend_list ll on r.f_rid = ll.id where l.id = #{id}
+    </select>
 </mapper>
